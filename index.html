@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Etherea Library</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, sans-serif;
+        }
+
+        body{
+            background:#f7f2fa;
+            color:#333;
+        }
+
+        /* HEADER */
+
+        header{
+            background:white;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:20px 60px;
+            box-shadow:0 2px 10px rgba(0,0,0,0.1);
+            position:sticky;
+            top:0;
+        }
+
+        .logo-area{
+            display:flex;
+            align-items:center;
+            gap:15px;
+        }
+
+        .logo-area img{
+            width:70px;
+        }
+
+        .logo-text{
+            font-size:35px;
+            color:#a64ac9;
+            font-weight:bold;
+        }
+
+        nav a{
+            text-decoration:none;
+            color:#6b217f;
+            margin-left:25px;
+            font-weight:bold;
+            transition:0.3s;
+        }
+
+        nav a:hover{
+            color:#d291ff;
+        }
+
+        /* HERO */
+
+        .hero{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:80px 70px;
+            min-height:90vh;
+
+            background:
+            linear-gradient(rgba(248,236,255,0.85),
+            rgba(255,255,255,0.85)),
+            url('logo.png');
+
+            background-size:cover;
+            background-repeat:no-repeat;
+            background-position:center;
+        }
+
+        .hero-text{
+            width:50%;
+        }
+
+        .hero-text h1{
+            font-size:85px;
+            color:#a64ac9;
+            line-height:1.1;
+        }
+
+        .hero-text p{
+            margin-top:20px;
+            font-size:22px;
+            color:#555;
+        }
+
+        .search-box{
+            margin-top:35px;
+            display:flex;
+            width:500px;
+        }
+
+        .search-box input{
+            width:100%;
+            padding:18px;
+            border:none;
+            border-radius:50px 0 0 50px;
+            outline:none;
+            font-size:16px;
+            box-shadow:0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .search-box button{
+            padding:18px 35px;
+            border:none;
+            background:#a64ac9;
+            color:white;
+            border-radius:0 50px 50px 0;
+            cursor:pointer;
+            font-size:16px;
+        }
+
+        .hero-image{
+            width:45%;
+            text-align:center;
+            display:none;
+        }
+
+        .hero-image img{
+            width:100%;
+            max-width:500px;
+            filter:drop-shadow(0 10px 20px rgba(0,0,0,0.2));
+        }
+
+        /* SECTION */
+
+        section{
+            padding:80px 60px;
+        }
+
+        .title{
+            text-align:center;
+            font-size:40px;
+            color:#8e3ab7;
+            margin-bottom:50px;
+        }
+
+        .card-container{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+            gap:25px;
+        }
+
+        .card{
+            background:white;
+            padding:30px;
+            border-radius:25px;
+            box-shadow:0 5px 15px rgba(0,0,0,0.08);
+            transition:0.3s;
+        }
+
+        .card:hover{
+            transform:translateY(-8px);
+        }
+
+        .card h3{
+            color:#a64ac9;
+            margin-bottom:15px;
+            font-size:24px;
+        }
+
+        .card p{
+            color:#555;
+            line-height:1.6;
+        }
+
+        /* ABOUT */
+
+        .about{
+            text-align:center;
+            background:#f4e5ff;
+            border-radius:30px;
+        }
+
+        .about p{
+            max-width:900px;
+            margin:auto;
+            line-height:1.8;
+            font-size:18px;
+        }
+
+        /* FOOTER */
+
+        footer{
+            background:linear-gradient(to right,#b56ddb,#8e3ab7);
+            color:white;
+            text-align:center;
+            padding:40px;
+            margin-top:50px;
+        }
+
+        footer p{
+            margin:10px 0;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <header>
+
+        <div class="logo-area">
+
+            <!-- GANTI logo.png DENGAN NAMA FILE LOGO KAMU -->
+
+            <img src="logo.png">
+
+            <div class="logo-text">
+                Etherea Library
+            </div>
+
+        </div>
+
+        <nav>
+			<a href="etherea library.html">Etherea Library</a>
+            <a href="home.html">Home</a>
+            <a href="profil.html">Profil</a>
+            <a href="koleksi.html">koleksi</a>
+            <a href="layanan.html">layanan</a>
+            <a href="agenda.html">Agenda</a>
+            <a href="FAQ.html">FAQ</a>
+            <a href="kontak.html">Kontak</a>
+        </nav>
+
+    </header>
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="hero-text">
+
+            <h1>
+                Etherea<br>Library
+            </h1>
+
+            <p>
+                Read Beyond Reality
+            </p>
+
+
+        </div>
+
+        <div class="hero-image">
+
+            <!-- FOTO BUKU -->
+
+            <img src="logo.png">
+
+        </div>
+
+    </section>
+
+    <!-- ABOUT -->
+
+    <section class="about">
+
+        <h2 class="title">
+            Tentang Kami
+        </h2>
+
+        <p>
+            Etherea Library merupakan website perpustakaan
+            digital modern yang menyediakan akses informasi,
+            e-book, jurnal, dan berbagai koleksi bacaan
+            secara mudah dan efisien.
+        </p>
+
+    </section>
+
+    <!-- KOLEKSI -->
+
+    <section>
+
+        <h2 class="title">
+            Koleksi Buku Etherea Library
+        </h2>
+
+        <div class="card-container">
+
+            <div class="card">
+
+                <h3>Koleksi Buku</h3>
+
+                <p>
+                    Koleksi buku non digital berisi berbagai buku cetak yang dapat dibaca dan dipinjam langsung di perpustakaan..
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Koleksi Digital</h3>
+
+                <p>
+                    Nikmati koleksi digital interaktif berisi buku, jurnal, dan dokumen elektronik dengan akses yang mudah dan cepat..
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Skripsi, e-book</h3>
+
+                <p>
+                    Temukan berbagai koleksi skripsi mahasiswa sebagai sumber referensi penelitian dan pembelajaran akademik. 
+					Akses berbagai e-book praktis dan modern yang dapat dibaca kapan saja melalui perangkat digital.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+ 
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 Etherea Library
+        </p>
+
+        <p>
+            Read Beyond Reality
+        </p>
+
+    </footer>
+
+</body>
+</html>
