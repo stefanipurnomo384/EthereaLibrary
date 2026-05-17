@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Katalog Buku Akademik - Etherea</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* ================= ROOT ================= */
+:root{
+    --primary:#8e3ab7;
+    --secondary:#c084fc;
+}
+
+/* ================= GLOBAL ================= */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#f8f3ff,#efe4ff,#ffffff);
+    color:#4b3a5d;
+    overflow-x:hidden;
+}
+
+/* ================= AURORA ================= */
+body::before,
+body::after{
+    content:'';
+    position:fixed;
+    width:500px;
+    height:500px;
+    border-radius:50%;
+    filter:blur(140px);
+    opacity:.3;
+    z-index:-1;
+}
+
+body::before{
+    background:#c084fc;
+    top:-150px;
+    left:-120px;
+}
+
+body::after{
+    background:#8b5cf6;
+    bottom:-150px;
+    right:-120px;
+}
+
+/* ================= NAVBAR ================= */
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 8%;
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    background:rgba(255,255,255,0.25);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid rgba(255,255,255,0.3);
+}
+
+.logo{
+    font-weight:700;
+    font-size:22px;
+    color:var(--primary);
+}
+
+.nav-links{
+    display:flex;
+    list-style:none;
+    gap:22px;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:#5b4b72;
+    position:relative;
+    transition:0.3s;
+}
+
+.nav-links a:hover{
+    color:var(--primary);
+}
+
+.nav-links a::after{
+    content:'';
+    position:absolute;
+    bottom:-4px;
+    left:0;
+    width:0%;
+    height:2px;
+    background:var(--secondary);
+    transition:0.3s;
+}
+
+.nav-links a:hover::after{
+    width:100%;
+}
+
+/* ================= HEADER ================= */
+header{
+    padding:60px 8% 30px;
+}
+
+header h1{
+    font-size:42px;
+    color:var(--primary);
+}
+
+header p{
+    margin-top:10px;
+    max-width:650px;
+    color:#6b5a7a;
+}
+
+/* ================= CATEGORY ================= */
+.category-container{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    padding:20px 8%;
+}
+
+.category-card{
+    padding:10px 16px;
+    border-radius:20px;
+    background:rgba(255,255,255,0.4);
+    backdrop-filter:blur(10px);
+    border:1px solid rgba(255,255,255,0.4);
+}
+
+/* ================= GRID ================= */
+.books-section{
+    padding:40px 8% 80px;
+}
+
+.books-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:25px;
+}
+
+.book-card{
+    background:rgba(255,255,255,0.45);
+    backdrop-filter:blur(18px);
+    border-radius:25px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,0.5);
+    transition:0.4s;
+}
+
+.book-card:hover{
+    transform:translateY(-10px);
+}
+
+/* IMAGE */
+.book-image{
+    height:220px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:60px;
+    background:linear-gradient(135deg,var(--primary),var(--secondary));
+    color:white;
+}
+
+/* CONTENT */
+.book-content{
+    padding:18px;
+}
+
+.book-category{
+    font-size:12px;
+    padding:5px 10px;
+    border-radius:999px;
+    background:rgba(140,90,200,0.15);
+    color:var(--primary);
+}
+
+.book-content h2{
+    font-size:18px;
+    margin-top:10px;
+}
+
+.author{
+    font-size:13px;
+    color:#7a6a8f;
+}
+
+.description{
+    font-size:13px;
+    margin-top:10px;
+    color:#5f4d70;
+    line-height:1.6;
+}
+
+/* ================= FOOTER ================= */
+footer{
+    text-align:center;
+    padding:25px;
+    background:rgba(255,255,255,0.3);
+    color:#6b5a7a;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="logo">✦ Etherea Library</div>
+
+    <ul class="nav-links">
+        <li><a href="Koleksi buku.html">Koleksi Buku</a></li>
+        <li><a href="Novel.html">Novel</a></li>
+        <li><a href="Self Development.html">Self Development</a></li>
+        <li><a href="akademik.html">Akademik</a></li>
+    </ul>
+</nav>
+
+<!-- HEADER -->
+<header>
+    <h1>Katalog Buku Akademik</h1>
+    <p>Koleksi buku akademik modern dengan desain Etherea yang aesthetic dan elegan.</p>
+</header>
+
+<!-- BOOKS -->
+<section class="books-section">
+
+<div class="books-grid">
+
+    <div class="book-card">
+        <div class="book-image">📘</div>
+        <div class="book-content">
+            <span class="book-category">Teknologi</span>
+            <h2>Introduction to Algorithms</h2>
+            <p class="author">Thomas H. Cormen</p>
+            <p class="description">Struktur data & algoritma mendalam.</p>
+        </div>
+    </div>
+
+    <div class="book-card">
+        <div class="book-image">📚</div>
+        <div class="book-content">
+            <span class="book-category">Perpustakaan</span>
+            <h2>Digital Libraries</h2>
+            <p class="author">William Y. Arms</p>
+            <p class="description">Sistem perpustakaan digital modern.</p>
+        </div>
+    </div>
+
+    <div class="book-card">
+        <div class="book-image">🧠</div>
+        <div class="book-content">
+            <span class="book-category">Psikologi</span>
+            <h2>Educational Psychology</h2>
+            <p class="author">Anita Woolfolk</p>
+            <p class="description">Teori belajar & motivasi siswa.</p>
+        </div>
+    </div>
+
+    <div class="book-card">
+        <div class="book-image">🔬</div>
+        <div class="book-content">
+            <span class="book-category">Sains</span>
+            <h2>Physics for Scientists</h2>
+            <p class="author">Serway & Jewett</p>
+            <p class="description">Fisika dasar hingga lanjutan.</p>
+        </div>
+    </div>
+
+    <div class="book-card">
+        <div class="book-image">📖</div>
+        <div class="book-content">
+            <span class="book-category">Pendidikan</span>
+            <h2>Strategi Pembelajaran</h2>
+            <p class="author">Wina Sanjaya</p>
+            <p class="description">Metode pembelajaran efektif.</p>
+        </div>
+    </div>
+
+    <div class="book-card">
+        <div class="book-image">📊</div>
+        <div class="book-content">
+            <span class="book-category">Manajemen</span>
+            <h2>Principles of Management</h2>
+            <p class="author">Stephen P. Robbins</p>
+            <p class="description">Dasar manajemen modern.</p>
+        </div>
+    </div>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+    © 2026 Etherea Library — Academic Collection
+</footer>
+
+</body>
+</html>

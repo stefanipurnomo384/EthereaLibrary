@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Etherea Library</title>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#f8f4fc;
+    overflow-x:hidden;
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar{
+    width:100%;
+    padding:28px 9%;
+
+    position:fixed;
+    top:0;
+    left:0;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    backdrop-filter:blur(18px);
+
+    background:rgba(255,255,255,0.45);
+
+    z-index:999;
+    border-bottom:1px solid rgba(199,125,255,0.15);
+}
+
+.logo{
+    font-family:'Cormorant Garamond',serif;
+    font-size:34px;
+    font-weight:700;
+    color:#5b2a86;
+    letter-spacing:-1px;
+}
+
+.logo span{
+    color:#c77dff;
+    font-style:italic;
+    font-weight:500;
+}
+
+.nav-links{
+    display:flex;
+    gap:35px;
+}
+
+.nav-links a{
+    text-decoration:none;
+
+    font-family:'Inter',sans-serif;
+    font-size:15px;
+    font-weight:500;
+
+    color:#5b5563;
+
+    position:relative;
+
+    transition:0.3s ease;
+}
+
+.nav-links a::after{
+    content:"";
+    position:absolute;
+
+    left:0;
+    bottom:-8px;
+
+    width:0%;
+    height:2px;
+
+    background:#c77dff;
+
+    transition:0.4s ease;
+}
+
+.nav-links a:hover{
+    color:#7b2cbf;
+}
+
+.nav-links a:hover::after{
+    width:100%;
+}
+
+/* SECTION */
+
+.profile-section{
+    padding:170px 9% 120px;
+}
+
+/* TITLE */
+
+.profile-title{
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:105px;
+    line-height:0.9;
+
+    color:#5b2a86;
+
+    margin-bottom:110px;
+
+    font-weight:700;
+    letter-spacing:-3px;
+}
+
+.profile-title span{
+    display:block;
+
+    color:#c77dff;
+
+    font-style:italic;
+    font-weight:500;
+
+    margin-left:120px;
+}
+
+/* WRAPPER */
+
+.profile-wrapper{
+    display:flex;
+    flex-direction:column;
+    gap:140px;
+}
+
+/* CARD */
+
+.profile-card{
+    display:grid;
+    grid-template-columns:
+    160px
+    1fr;
+
+    gap:60px;
+
+    position:relative;
+
+    opacity:0;
+
+    transform:
+    translateY(70px);
+
+    transition:
+    opacity 1s ease,
+    transform 1s ease;
+}
+
+/* SHOW */
+
+.profile-card.show{
+    opacity:1;
+
+    transform:
+    translateY(0);
+}
+
+/* NUMBER */
+
+.profile-number{
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:140px;
+    color:rgba(123,44,191,0.08);
+
+    line-height:0.8;
+
+    font-weight:700;
+}
+
+/* CONTENT */
+
+.profile-content{
+    position:relative;
+
+    padding-top:25px;
+}
+
+/* LINE */
+
+.profile-content::before{
+    content:"";
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:90px;
+    height:2px;
+
+    background:
+    linear-gradient(to right,
+    #c77dff,
+    transparent);
+}
+
+/* HEADING */
+
+.profile-content h3{
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:52px;
+    font-weight:600;
+
+    color:#5a189a;
+
+    margin-bottom:28px;
+
+    letter-spacing:-1px;
+}
+
+/* TEXT */
+
+.profile-content p{
+    font-family:'Inter',sans-serif;
+
+    font-size:17px;
+    line-height:2.2;
+
+    color:#5b5563;
+
+    font-weight:300;
+
+    max-width:900px;
+}
+
+/* ZIGZAG */
+
+.profile-card:nth-child(even){
+    margin-left:140px;
+}
+
+/* HOVER */
+
+.profile-card{
+    transition:0.5s ease;
+}
+
+.profile-card:hover{
+    transform:
+    translateY(-8px);
+}
+
+.profile-card:hover .profile-content::before{
+    width:130px;
+
+    transition:0.5s ease;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+    .navbar{
+        flex-direction:column;
+        gap:18px;
+    }
+
+    .nav-links{
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:20px;
+    }
+
+    .profile-section{
+        padding:220px 8% 80px;
+    }
+
+    .profile-title{
+        font-size:65px;
+    }
+
+    .profile-title span{
+        margin-left:40px;
+    }
+
+    .profile-card{
+        grid-template-columns:1fr;
+        gap:20px;
+
+        margin:0 !important;
+    }
+
+    .profile-number{
+        font-size:80px;
+    }
+
+    .profile-content h3{
+        font-size:38px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        Etherea <span>Library</span>
+    </div>
+
+    <div class="nav-links">
+		<a href="etherea library.html">Etherea Library</a>
+        <a href="home.html">Home</a>
+        <a href="profil.html">Profil</a>
+        <a href="koleksi.html">Koleksi</a>
+        <a href="layanan.html">Layanan</a>
+        <a href="agenda.html">Agenda</a>
+        <a href="FAQ.html">FAQ</a>
+        <a href="kontak.html">Kontak</a>
+    </div>
+
+</nav>
+
+<section class="profile-section">
+
+    <h1 class="profile-title">
+        Etherea
+        <span>Library</span>
+    </h1>
+
+    <div class="profile-wrapper">
+
+        <!-- 01 -->
+
+        <div class="profile-card">
+
+            <div class="profile-number">
+                01
+            </div>
+
+            <div class="profile-content">
+
+                <h3>
+                    Tentang Kami
+                </h3>
+
+                <p>
+                    Etherea Library adalah perpustakaan digital modern yang dirancang sebagai ruang literasi kreatif dan inspiratif bagi mahasiswa serta masyarakat umum. 
+                    Nama “Etherea” berasal dari kata <i>ethereal</i> yang berarti indah, ringan, dan melampaui batas realitas, sesuai dengan slogan kami yaitu “Read Beyond Reality.” 
+                    Etherea Library hadir untuk memberikan pengalaman membaca yang tidak hanya informatif, tetapi juga imajinatif dan menyenangkan. Dengan tampilan bernuansa ungu pastel yang elegan serta konsep digital modern, perpustakaan ini menyediakan akses mudah terhadap berbagai koleksi buku, e-book, jurnal, dan karya ilmiah.
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- 02 -->
+
+        <div class="profile-card">
+
+            <div class="profile-number">
+                02
+            </div>
+
+            <div class="profile-content">
+
+                <h3>
+                    Visi
+                </h3>
+
+                <p>
+                    Menjadi perpustakaan digital modern yang inovatif, inspiratif, dan mudah diakses untuk mendukung perkembangan literasi serta pengetahuan masyarakat.
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- 03 -->
+
+        <div class="profile-card">
+
+            <div class="profile-number">
+                03
+            </div>
+
+            <div class="profile-content">
+
+                <h3>
+                    Misi
+                </h3>
+
+                <p>
+                    • Menyediakan layanan perpustakaan digital yang cepat, mudah, dan nyaman.<br><br>
+                    • Meningkatkan minat baca melalui tampilan dan sistem yang modern serta interaktif.<br><br>
+                    • Menyediakan koleksi buku, jurnal, dan sumber informasi digital yang berkualitas.<br><br>
+                    • Mendukung kegiatan belajar dan penelitian dengan akses informasi yang luas.
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- 04 -->
+
+        <div class="profile-card">
+
+            <div class="profile-number">
+                04
+            </div>
+
+            <div class="profile-content">
+
+                <h3>
+                    Struktur Organisasi
+                </h3>
+
+                <p>
+                    ✦ Director & Founder - Kok, Stefani Purnomo<br><br>
+                    ✦ Head of Digital Services - Dhya Sabrina Pameshwari<br><br>
+                    ✦ Head of Creative & Event - Alya Putri Maheswari<br><br>
+                    ✦ Head of Library Operations - Hida Musyarofatun <br><br>
+                    ✦ Staff layanan - 10 orang
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<script>
+
+const observer = new IntersectionObserver((entries)=>{
+
+    entries.forEach((entry)=>{
+
+        if(entry.isIntersecting){
+            entry.target.classList.add("show");
+        }
+
+    });
+
+},{
+    threshold:0.2
+});
+
+document.querySelectorAll(".profile-card").forEach((card)=>{
+
+    observer.observe(card);
+
+});
+
+</script>
+
+</body>
+</html>

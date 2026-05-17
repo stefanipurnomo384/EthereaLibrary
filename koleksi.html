@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Etherea Library - OPAC</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:
+    linear-gradient(135deg,#f5ecff,#efe7ff,#f8f5ff);
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+/* AURORA */
+
+body::before{
+    content:'';
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:#c084fc;
+    border-radius:50%;
+    filter:blur(120px);
+    top:-120px;
+    left:-120px;
+    opacity:.35;
+    animation:move1 10s infinite alternate;
+}
+
+body::after{
+    content:'';
+    position:fixed;
+    width:450px;
+    height:450px;
+    background:#8b5cf6;
+    border-radius:50%;
+    filter:blur(120px);
+    bottom:-150px;
+    right:-100px;
+    opacity:.3;
+    animation:move2 12s infinite alternate;
+}
+
+@keyframes move1{
+    from{
+        transform:translate(0,0);
+    }
+    to{
+        transform:translate(120px,60px);
+    }
+}
+
+@keyframes move2{
+    from{
+        transform:translate(0,0);
+    }
+    to{
+        transform:translate(-100px,-80px);
+    }
+}
+
+/* NAVBAR */
+
+.navbar{
+    width:100%;
+    padding:25px 70px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:100;
+    backdrop-filter:blur(20px);
+    background:rgba(255,255,255,0.2);
+    border-bottom:1px solid rgba(255,255,255,0.3);
+}
+
+.logo{
+    font-size:28px;
+    font-weight:700;
+    color:#5b21b6;
+}
+
+.logo span{
+    color:#c084fc;
+    font-style:italic;
+}
+
+.nav-links{
+    display:flex;
+    gap:35px;
+    flex-wrap:wrap;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:#5b21b6;
+    font-weight:500;
+    font-size:15px;
+    position:relative;
+    transition:.3s;
+}
+
+.nav-links a::after{
+    content:'';
+    position:absolute;
+    left:0;
+    bottom:-8px;
+    width:0%;
+    height:2px;
+    background:#a855f7;
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:#7c3aed;
+}
+
+.nav-links a:hover::after{
+    width:100%;
+}
+
+/* HERO */
+
+.hero{
+    padding:100px 70px 60px;
+    text-align:center;
+    position:relative;
+    z-index:1;
+}
+
+.hero h1{
+    font-size:65px;
+    color:#4c1d95;
+    margin-bottom:20px;
+    animation:fadeUp 1s ease;
+}
+
+.hero p{
+    color:#6b7280;
+    font-size:18px;
+    max-width:700px;
+    margin:auto;
+    line-height:1.8;
+    animation:fadeUp 1.3s ease;
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* SEARCH */
+
+.search-box{
+    margin-top:45px;
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.search-box input{
+    width:450px;
+    padding:18px 22px;
+    border:none;
+    border-radius:18px;
+    background:rgba(255,255,255,0.7);
+    backdrop-filter:blur(10px);
+    box-shadow:0 8px 25px rgba(0,0,0,0.08);
+    font-size:16px;
+    outline:none;
+}
+
+.search-box button{
+    padding:18px 30px;
+    border:none;
+    border-radius:18px;
+    background:linear-gradient(135deg,#7c3aed,#a855f7);
+    color:white;
+    font-size:15px;
+    cursor:pointer;
+    transition:.3s;
+    box-shadow:0 10px 25px rgba(124,58,237,0.3);
+}
+
+.search-box button:hover{
+    transform:translateY(-3px);
+}
+
+/* CATEGORY */
+
+.category{
+    padding:20px 70px;
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+    justify-content:center;
+    position:relative;
+    z-index:1;
+}
+
+.category a{
+    padding:12px 22px;
+    background:rgba(255,255,255,0.55);
+    border-radius:30px;
+    backdrop-filter:blur(12px);
+    color:#5b21b6;
+    font-weight:500;
+    cursor:pointer;
+    transition:.3s;
+    text-decoration:none;
+}
+
+.category a:hover{
+    background:#7c3aed;
+    color:white;
+}
+
+/* BOOKS */
+
+.book-section{
+    padding:50px 70px 90px;
+    position:relative;
+    z-index:1;
+}
+
+.section-title{
+    font-size:40px;
+    color:#4c1d95;
+    margin-bottom:40px;
+    text-align:center;
+}
+
+.book-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:rgba(255,255,255,0.45);
+    border:1px solid rgba(255,255,255,0.4);
+    backdrop-filter:blur(18px);
+    border-radius:28px;
+    overflow:hidden;
+    transition:.4s;
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+.card img{
+    width:100%;
+    height:300px;
+    object-fit:cover;
+}
+
+.card-content{
+    padding:25px;
+}
+
+.card-content h3{
+    color:#4c1d95;
+    margin-bottom:10px;
+    font-size:22px;
+}
+
+.author{
+    color:#6b7280;
+    margin-bottom:15px;
+}
+
+.desc{
+    color:#4b5563;
+    font-size:14px;
+    line-height:1.7;
+    margin-bottom:20px;
+}
+
+.status{
+    display:inline-block;
+    padding:8px 16px;
+    border-radius:20px;
+    background:#dcfce7;
+    color:#166534;
+    font-size:13px;
+    font-weight:600;
+}
+
+/* FOOTER */
+
+footer{
+    padding:35px;
+    text-align:center;
+    color:#6b7280;
+    background:rgba(255,255,255,0.3);
+    backdrop-filter:blur(15px);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+    .navbar{
+        padding:20px;
+        flex-direction:column;
+        gap:18px;
+    }
+
+    .nav-links{
+        justify-content:center;
+        gap:18px;
+    }
+
+    .hero{
+        padding:80px 20px 40px;
+    }
+
+    .hero h1{
+        font-size:42px;
+    }
+
+    .search-box input{
+        width:100%;
+    }
+
+    .book-section{
+        padding:40px 20px 80px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<div class="navbar">
+
+    <div class="logo">
+        📚 Etherea <span>Library</span>
+    </div>
+
+    <div class="nav-links">
+		<a href="etherea library.html">Etherea Library</a>
+        <a href="home.html">Home</a>
+        <a href="profil.html">Profil</a>
+        <a href="koleksi.html">Koleksi</a>
+        <a href="layanan.html">Layanan</a>
+        <a href="agenda.html">Agenda</a>
+        <a href="FAQ.html">FAQ</a>
+        <a href="kontak.html">Kontak</a>
+    </div>
+
+</div>
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <h1>Katalog Online Perpustakaan</h1>
+
+    <p>
+        Temukan ribuan koleksi buku, e-book, jurnal, dan referensi akademik 
+        dengan tampilan modern yang nyaman dan interaktif.
+    </p>
+
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Cari judul buku, penulis, atau kategori...">
+        <button onclick="searchBook()">Search</button>
+    </div>
+
+</section>
+
+<!-- CATEGORY -->
+
+<div class="category">
+
+    <a href="koleksi buku.html">Koleksi Buku</a>
+    <a href="Koleksi Digital.html">Koleksi Digital</a>
+    <a href="Skripsi.html">Skripsi</a>
+
+</div>
+
+<!-- NOVEL -->
+
+<section id="novel" class="book-section">
+
+    <h2 class="section-title">📖 Koleksi Buku</h2>
+
+    <div class="book-grid">
+
+        <!-- FILOSOFI TERAS -->
+
+        <div class="card">
+
+            <img src="filosofi teras.jpg" alt="Filosofi Teras">
+
+            <div class="card-content">
+
+                <h3>Filosofi Teras</h3>
+
+                <p class="author">Henry Manampiring</p>
+
+                <p class="desc">
+                    Filosofi Teras adalah buku self-improvement yang membahas 
+                    cara berpikir tenang lewat filsafat Stoisisme.
+                </p>
+
+                <span class="status">Tersedia</span>
+
+            </div>
+
+        </div>
+
+        <!-- LAUT BERCERITA -->
+
+        <div class="card">
+
+            <img src="laut bercerita.jpg" alt="Laut Bercerita">
+
+            <div class="card-content">
+
+                <h3>Laut Bercerita</h3>
+
+                <p class="author">Leila S. Chudori</p>
+
+                <p class="desc">
+                    Novel emosional tentang perjuangan, kehilangan, 
+                    dan sejarah Indonesia di masa Orde Baru.
+                </p>
+
+                <span class="status">Dipinjam</span>
+
+            </div>
+
+        </div>
+
+        <!-- SAPIENS -->
+
+        <div class="card">
+
+            <img src="sapiens.jpg" alt="sapiens">
+
+            <div class="card-content">
+
+                <h3>Sapiens: A Brief History of Humankind</h3>
+
+                <p class="author">Yuval Noah Harari</p>
+
+                <p class="desc">
+                    Sapiens: A Brief History of Humankind adalah buku yang membahas sejarah perkembangan manusia dari zaman purba sampai modern. 
+                    Buku ini menjelaskan bagaimana manusia bisa berkembang lewat bahasa, kerja sama, ilmu pengetahuan, dan teknologi hingga menjadi spesies paling dominan di dunia
+                </p>
+
+                <span class="status">Tersedia</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+    © 2026 Etherea Library — Modern Digital Library
+
+</footer>
+
+<script>
+
+function searchBook(){
+
+    const keyword = document.getElementById("searchInput").value;
+
+    if(keyword.trim() !== ""){
+
+        const url = "https://opac.perpusnas.go.id/";
+
+        window.open(url, "_blank");
+
+    }
+
+}
+
+document.getElementById("searchInput").addEventListener("keypress", function(event){
+
+    if(event.key === "Enter"){
+        searchBook();
+    }
+
+});
+
+</script>
+</body>
+</html>

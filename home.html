@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Etherea Library</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#f7f2fa;
+    overflow-x:hidden;
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar{
+
+    width:100%;
+
+    padding:28px 9%;
+
+    position:fixed;
+    top:0;
+    left:0;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    backdrop-filter:blur(18px);
+
+    background:
+    rgba(255,255,255,0.35);
+
+    border-bottom:
+    1px solid rgba(255,255,255,0.3);
+
+    z-index:999;
+}
+
+.logo{
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:36px;
+
+    color:#8f43bc;
+
+    font-weight:700;
+}
+
+.logo span{
+
+    color:#d38cff;
+    font-style:italic;
+}
+
+.nav-links{
+
+    display:flex;
+    gap:35px;
+}
+
+.nav-links a{
+
+    text-decoration:none;
+
+    color:#725b84;
+
+    font-size:15px;
+    font-weight:500;
+
+    position:relative;
+
+    transition:0.4s ease;
+}
+
+.nav-links a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    bottom:-8px;
+
+    width:0%;
+    height:2px;
+
+    background:#c77dff;
+
+    transition:0.4s ease;
+}
+
+.nav-links a:hover{
+
+    color:#a64ac9;
+}
+
+.nav-links a:hover::after{
+
+    width:100%;
+}
+
+/* ================= HOME ================= */
+
+.hero-section{
+
+    position:relative;
+    overflow:hidden;
+
+    min-height:100vh;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:120px 40px;
+
+    background:
+    linear-gradient(
+    135deg,
+    #faf6ff,
+    #f3e8ff,
+    #efe2ff);
+}
+
+/* HERO AURORA */
+
+.hero-aurora{
+
+    position:absolute;
+    inset:0;
+    z-index:0;
+}
+
+.hero-aurora span{
+
+    position:absolute;
+
+    width:60vw;
+    height:60vw;
+
+    border-radius:50%;
+
+    filter:blur(90px);
+
+    opacity:0.4;
+
+    mix-blend-mode:screen;
+
+    animation:auroraMove 18s ease-in-out infinite alternate;
+}
+
+.hero-aurora span:nth-child(1){
+
+    background:#d7b2ff;
+
+    top:-20%;
+    left:-10%;
+}
+
+.hero-aurora span:nth-child(2){
+
+    background:#ffc9f5;
+
+    top:10%;
+    right:-15%;
+
+    animation-duration:24s;
+}
+
+.hero-aurora span:nth-child(3){
+
+    background:#c6a5ff;
+
+    bottom:-20%;
+    left:20%;
+
+    animation-duration:28s;
+}
+
+/* GRID */
+
+.hero-grid{
+
+    position:absolute;
+    inset:0;
+
+    background-image:
+
+    linear-gradient(
+    rgba(255,255,255,0.10) 1px,
+    transparent 1px),
+
+    linear-gradient(
+    90deg,
+    rgba(255,255,255,0.10) 1px,
+    transparent 1px);
+
+    background-size:55px 55px;
+
+    mask-image:
+    radial-gradient(circle, white 25%, transparent 90%);
+
+    z-index:1;
+}
+
+/* CONTENT */
+
+.hero-content{
+
+    position:relative;
+    z-index:5;
+
+    max-width:900px;
+
+    text-align:center;
+}
+
+/* TAG */
+
+.hero-tag{
+
+    display:inline-block;
+
+    padding:10px 22px;
+
+    border-radius:50px;
+
+    background:
+    rgba(255,255,255,0.45);
+
+    backdrop-filter:blur(10px);
+
+    border:
+    1px solid rgba(255,255,255,0.5);
+
+    color:#9a67c7;
+
+    font-size:14px;
+    letter-spacing:2px;
+
+    margin-bottom:28px;
+
+    animation:fadeUp 1s ease;
+}
+
+/* TITLE */
+
+.hero-title{
+
+    font-size:95px;
+
+    line-height:1.05;
+
+    font-family:'Cormorant Garamond',serif;
+
+    color:#8f43bc;
+
+    margin-bottom:25px;
+
+    animation:fadeUp 1.2s ease;
+}
+
+.hero-title span{
+
+    background:
+    linear-gradient(
+    90deg,
+    #b14de0,
+    #df9dff);
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+/* DESC */
+
+.hero-desc{
+
+    font-size:20px;
+
+    line-height:2;
+
+    color:#725b84;
+
+    max-width:760px;
+
+    margin:auto auto 40px;
+
+    animation:fadeUp 1.4s ease;
+}
+
+/* BUTTON */
+
+.hero-button a{
+
+    display:inline-block;
+
+    padding:16px 38px;
+
+    border-radius:50px;
+
+    text-decoration:none;
+
+    color:white;
+
+    font-weight:500;
+
+    background:
+    linear-gradient(
+    90deg,
+    #b04de0,
+    #cf8dff);
+
+    box-shadow:
+    0 10px 30px rgba(176,77,224,0.3);
+
+    transition:0.4s ease;
+}
+
+.hero-button a:hover{
+
+    transform:
+    translateY(-6px)
+    scale(1.03);
+
+    box-shadow:
+    0 18px 35px rgba(176,77,224,0.45);
+}
+
+/* SPARKLES */
+
+.hero-star{
+
+    position:absolute;
+
+    color:white;
+
+    opacity:0.8;
+
+    animation:float 4s ease-in-out infinite;
+
+    z-index:3;
+}
+
+.star1{
+    top:130px;
+    left:10%;
+    font-size:24px;
+}
+
+.star2{
+    right:14%;
+    top:240px;
+    font-size:18px;
+    animation-delay:1s;
+}
+
+.star3{
+    bottom:150px;
+    left:20%;
+    font-size:20px;
+    animation-delay:2s;
+}
+
+/* ================= NEWS ================= */
+
+.news-section{
+
+    position:relative;
+    overflow:hidden;
+
+    padding:120px 70px;
+
+    background:
+    linear-gradient(
+    135deg,
+    #faf6ff,
+    #f3e8ff,
+    #efe2ff);
+}
+
+/* AURORA */
+
+.aurora{
+
+    position:absolute;
+    inset:0;
+
+    overflow:hidden;
+    z-index:0;
+}
+
+.aurora span{
+
+    position:absolute;
+
+    width:70vw;
+    height:70vw;
+
+    border-radius:50%;
+
+    filter:blur(90px);
+
+    opacity:0.45;
+
+    mix-blend-mode:screen;
+
+    animation:moveAurora 18s ease-in-out infinite alternate;
+}
+
+.aurora span:nth-child(1){
+
+    background:#d8b4ff;
+
+    top:-15%;
+    left:-10%;
+}
+
+.aurora span:nth-child(2){
+
+    background:#ffc8f3;
+
+    top:10%;
+    right:-20%;
+}
+
+.aurora span:nth-child(3){
+
+    background:#bfa2ff;
+
+    bottom:-25%;
+    left:20%;
+}
+
+.aurora span:nth-child(4){
+
+    background:#f3d1ff;
+
+    bottom:-10%;
+    right:10%;
+}
+
+/* GRID */
+
+.grid-bg{
+
+    position:absolute;
+    inset:0;
+
+    background-image:
+
+    linear-gradient(
+    rgba(255,255,255,0.10) 1px,
+    transparent 1px),
+
+    linear-gradient(
+    90deg,
+    rgba(255,255,255,0.10) 1px,
+    transparent 1px);
+
+    background-size:55px 55px;
+
+    mask-image:
+    radial-gradient(circle, white 30%, transparent 90%);
+
+    z-index:1;
+}
+
+/* NOISE */
+
+.noise{
+
+    position:absolute;
+    inset:0;
+
+    background-image:
+    url('https://www.transparenttextures.com/patterns/noise.png');
+
+    opacity:0.18;
+
+    z-index:1;
+}
+
+/* TITLE */
+
+.title{
+
+    position:relative;
+    z-index:3;
+
+    text-align:center;
+
+    font-size:68px;
+
+    font-family:'Cormorant Garamond',serif;
+
+    color:#8e3ab7;
+
+    margin-bottom:20px;
+
+    letter-spacing:2px;
+}
+
+.title span{
+
+    background:
+    linear-gradient(
+    90deg,
+    #a64ac9,
+    #d98cff);
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.subtitle{
+
+    text-align:center;
+
+    color:#8b6a9e;
+
+    margin-bottom:90px;
+
+    font-style:italic;
+    letter-spacing:1px;
+
+    position:relative;
+    z-index:3;
+
+    font-size:18px;
+}
+
+/* TIMELINE */
+
+.news-timeline{
+
+    position:relative;
+    max-width:1100px;
+    margin:auto;
+
+    z-index:3;
+}
+
+.news-timeline::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:50%;
+    top:0;
+
+    width:6px;
+    height:100%;
+
+    transform:translateX(-50%);
+
+    background:
+    linear-gradient(
+    to bottom,
+    rgba(217,140,255,0),
+    #c98be6,
+    #a64ac9,
+    #c98be6,
+    rgba(217,140,255,0));
+
+    border-radius:30px;
+}
+
+/* ITEMS */
+
+.news-item{
+
+    position:relative;
+
+    width:50%;
+
+    padding:35px 55px;
+
+    opacity:0;
+
+    animation:fadeUp 1s ease forwards;
+}
+
+.news-item:nth-child(1){animation-delay:0.3s;}
+.news-item:nth-child(2){animation-delay:0.6s;}
+.news-item:nth-child(3){animation-delay:0.9s;}
+.news-item:nth-child(4){animation-delay:1.2s;}
+
+.news-item.left{
+    left:0;
+}
+
+.news-item.right{
+    left:50%;
+}
+
+/* CARD */
+
+.news-content{
+
+    position:relative;
+
+    overflow:hidden;
+
+    padding:38px;
+
+    border-radius:35px;
+
+    background:
+    rgba(255,255,255,0.35);
+
+    backdrop-filter:blur(18px);
+
+    border:
+    1px solid rgba(255,255,255,0.4);
+
+    box-shadow:
+    0 10px 35px rgba(166,74,201,0.12);
+
+    transition:0.45s ease;
+}
+
+.news-content:hover{
+
+    transform:
+    translateY(-12px)
+    scale(1.03);
+}
+
+/* ICON */
+
+.news-icon{
+
+    font-size:50px;
+
+    margin-bottom:20px;
+
+    animation:floating 3s ease-in-out infinite;
+}
+
+/* TEXT */
+
+.news-content h3{
+
+    font-size:32px;
+
+    font-family:'Cormorant Garamond',serif;
+
+    color:#8e3ab7;
+
+    margin-bottom:15px;
+}
+
+.news-content p{
+
+    font-size:16px;
+
+    color:#5f5f5f;
+
+    line-height:1.9;
+}
+
+/* DOT */
+
+.news-dot{
+
+    position:absolute;
+
+    top:55px;
+    right:-14px;
+
+    width:28px;
+    height:28px;
+
+    border-radius:50%;
+
+    background:#a64ac9;
+
+    border:5px solid white;
+
+    z-index:10;
+}
+
+.news-item.right .news-dot{
+
+    left:-14px;
+}
+
+/* ANIMATION */
+
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+        transform:translateY(50px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes floating{
+
+    0%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-10px);
+    }
+
+    100%{
+        transform:translateY(0);
+    }
+}
+
+@keyframes float{
+
+    0%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-12px);
+    }
+
+    100%{
+        transform:translateY(0);
+    }
+}
+
+@keyframes auroraMove{
+
+    0%{
+        transform:
+        translate(0,0)
+        scale(1);
+    }
+
+    100%{
+        transform:
+        translate(-30px,-40px)
+        scale(1.15);
+    }
+}
+
+@keyframes moveAurora{
+
+    0%{
+        transform:
+        translate(0,0)
+        scale(1);
+    }
+
+    100%{
+        transform:
+        translate(-30px,-40px)
+        scale(1.15);
+    }
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    .navbar{
+        flex-direction:column;
+        gap:20px;
+    }
+
+    .nav-links{
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:18px;
+    }
+
+    .hero-title{
+        font-size:58px;
+    }
+
+    .hero-desc{
+        font-size:16px;
+    }
+
+    .title{
+        font-size:48px;
+    }
+
+    .news-timeline::before{
+        left:22px;
+    }
+
+    .news-item{
+
+        width:100%;
+
+        padding-left:75px;
+        padding-right:10px;
+
+        margin-bottom:35px;
+    }
+
+    .news-item.right{
+        left:0;
+    }
+
+    .news-dot{
+
+        left:8px !important;
+        right:auto;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        Etherea <span>Library</span>
+    </div>
+
+    <div class="nav-links">
+		<a href="etherea library.html">Etherea Library</a>
+        <a href="home.html">Home</a>
+        <a href="profil.html">Profil</a>
+        <a href="koleksi.html">Koleksi</a>
+        <a href="layanan.html">Layanan</a>
+        <a href="agenda.html">Agenda</a>
+        <a href="FAQ.html">FAQ</a>
+        <a href="kontak.html">Kontak</a>
+    </div>
+
+</nav>
+
+<!-- HOME -->
+
+<section class="hero-section">
+
+    <div class="hero-aurora">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <div class="hero-grid"></div>
+
+    <div class="hero-star star1">✦</div>
+    <div class="hero-star star2">✧</div>
+    <div class="hero-star star3">✦</div>
+
+    <div class="hero-content">
+
+        <p class="hero-tag">
+            ✦ Welcome to Etherea
+        </p>
+
+        <h1 class="hero-title">
+            Etherea <span>Library</span>
+        </h1>
+
+        <p class="hero-desc">
+            Perpustakaan yang menjadi ruang tenang,
+            indah, dan penuh inspirasi untuk berpikir,
+            belajar, serta menemukan ide-ide baru
+            dalam suasana modern yang hangat dan estetik.
+        </p>
+
+        <div class="hero-button">
+            <a href="#">Explore Library</a>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- NEWS -->
+
+<section class="news-section">
+
+    <div class="aurora">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <div class="grid-bg"></div>
+
+    <div class="noise"></div>
+
+    <h2 class="title">
+        Berita <span>Terbaru</span>
+    </h2>
+
+    <p class="subtitle">
+        “Where stories live and knowledge blooms.”
+    </p>
+
+    <div class="news-timeline">
+
+        <div class="news-item left">
+
+            <div class="news-dot"></div>
+
+            <div class="news-content">
+
+                <div class="news-icon">📚</div>
+
+                <h3>Koleksi E-book Baru</h3>
+
+                <p>
+                    Etherea Library menghadirkan lebih dari
+                    5000+ koleksi e-book terbaru yang dapat
+                    diakses kapan saja secara online.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="news-item right">
+
+            <div class="news-dot"></div>
+
+            <div class="news-content">
+
+                <div class="news-icon">💻</div>
+
+                <h3>Layanan Digital</h3>
+
+                <p>
+                    Kini seluruh layanan perpustakaan tersedia
+                    secara online dengan tampilan modern dan
+                    sistem yang lebih cepat.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+</body>
+</html>

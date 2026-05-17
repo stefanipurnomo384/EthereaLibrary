@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Etherea Library - Layanan Lengkap</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+
+body{
+    background: linear-gradient(135deg, #f5f3ff, #ede9fe, #faf7ff);
+}
+
+/* NAVBAR */
+.navbar{
+    width:100%;
+    padding:22px 70px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:100;
+    backdrop-filter:blur(18px);
+    background:rgba(255,255,255,0.25);
+    border-bottom:1px solid rgba(124,58,237,0.15);
+}
+
+.logo{
+    font-size:26px;
+    font-weight:700;
+    color:#6d28d9;
+}
+
+.logo span{ color:#a78bfa; }
+
+.nav-links{
+    display:flex;
+    gap:22px;
+    flex-wrap:wrap;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:#4c1d95;
+    font-weight:500;
+    font-size:14px;
+}
+
+/* HEADER */
+.header{
+    text-align:center;
+    padding:70px 20px 30px;
+}
+
+.header h1{
+    font-size:44px;
+    color:#5b21b6;
+}
+
+.header p{
+    color:#6b7280;
+    margin-top:10px;
+}
+
+/* GRID */
+.container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+    gap:20px;
+    padding:40px 80px 80px;
+}
+
+/* CARD */
+.card{
+    background:rgba(255,255,255,0.7);
+    backdrop-filter:blur(12px);
+    padding:22px;
+    border-radius:22px;
+    cursor:pointer;
+    transition:0.3s;
+    border:1px solid rgba(124,58,237,0.1);
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 18px 40px rgba(124,58,237,0.25);
+}
+
+.card h3{
+    color:#5b21b6;
+    margin-bottom:8px;
+}
+
+.card p{
+    font-size:13px;
+    color:#4b5563;
+    line-height:1.6;
+}
+
+/* DETAIL BOX */
+.detail-box{
+    display:none;
+    margin-top:12px;
+    padding:12px;
+    border-radius:14px;
+    background:#ede9fe;
+    font-size:13px;
+    color:#4c1d95;
+}
+
+/* ACTIVE */
+.card.active .detail-box{
+    display:block;
+}
+
+/* BUTTON */
+.btn{
+    margin-top:10px;
+    display:inline-block;
+    padding:8px 12px;
+    border:none;
+    border-radius:10px;
+    background:linear-gradient(135deg,#7c3aed,#a855f7);
+    color:white;
+    font-size:12px;
+    cursor:pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+
+    <div class="logo">📚 Etherea <span>Library</span></div>
+
+    <div class="nav-links">
+        <a href="etherea library.html">Etherea Library</a>
+            <a href="home.html">Home</a>
+            <a href="profil.html">Profil</a>
+            <a href="koleksi.html">koleksi</a>
+            <a href="layanan.html">layanan</a>
+            <a href="agenda.html">Agenda</a>
+            <a href="FAQ.html">FAQ</a>
+            <a href="kontak.html">Kontak</a>
+    </div>
+
+</div>
+
+<!-- HEADER -->
+<div class="header">
+    <h1>Layanan Perpustakaan Digital</h1>
+    <p>Sistem layanan modern untuk mendukung literasi, akademik, dan kebutuhan riset</p>
+</div>
+
+<!-- CONTENT -->
+<div class="container">
+
+    <div class="card" onclick="toggle(this)">
+        <h3>📖 Peminjaman Buku</h3>
+        <p>Layanan peminjaman buku fisik & digital.</p>
+        <div class="detail-box">
+            Pinjam buku maksimal 7–14 hari dengan sistem otomatis. Bisa diperpanjang langsung dari akun anggota.
+        </div>
+    </div>
+
+    <div class="card" onclick="toggle(this)">
+        <h3>📚 OPAC (Katalog Digital)</h3>
+        <p>Pencarian buku & jurnal online.</p>
+        <div class="detail-box">
+            Cari buku, skripsi, jurnal, dan koleksi digital hanya dengan kata kunci.
+        </div>
+    </div>
+
+    <div class="card" onclick="toggle(this)">
+        <h3>🧾 Repository Skripsi & Jurnal</h3>
+        <p>Akses karya ilmiah mahasiswa.</p>
+        <div class="detail-box">
+            Menyediakan skripsi, tesis, dan jurnal penelitian dari berbagai bidang akademik.
+        </div>
+    </div>
+
+    <div class="card" onclick="toggle(this)">
+        <h3>💻 E-Book Access</h3>
+        <p>Baca buku digital kapan saja.</p>
+        <div class="detail-box">
+            Ribuan e-book bisa diakses online tanpa batas waktu dan tempat.
+        </div>
+    </div>
+
+    <div class="card" onclick="toggle(this)">
+        <h3>🪑 Booking Ruang Baca</h3>
+        <p>Reservasi ruang belajar.</p>
+        <div class="detail-box">
+            Siswa/mahasiswa dapat memesan ruang belajar kelompok atau individu.
+        </div>
+    </div>
+
+    <div class="card" onclick="toggle(this)">
+        <h3>🧑‍🏫 Konsultasi Literasi</h3>
+        <p>Bantuan penulisan & referensi.</p>
+        <div class="detail-box">
+            Bimbingan cara menulis ilmiah, sitasi, dan penggunaan referensi akademik.
+        </div>
+    </div>
+
+    <div class="card" onclick="toggle(this)">
+        <h3>📤 Request Buku</h3>
+        <p>Ajukan buku yang belum tersedia.</p>
+        <div class="detail-box">
+            Pengguna bisa meminta buku baru untuk ditambahkan ke koleksi perpustakaan.
+        </div>
+    </div>
+
+    <div class="card" onclick="toggle(this)">
+        <h3>🖨️ Print & Scan Center</h3>
+        <p>Layanan dokumen akademik.</p>
+        <div class="detail-box">
+            Fasilitas cetak, scan, dan fotokopi untuk kebutuhan tugas dan penelitian.
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+function toggle(el){
+
+    // tutup semua
+    document.querySelectorAll(".card").forEach(c=>{
+        if(c!==el) c.classList.remove("active");
+    });
+
+    // toggle card aktif
+    el.classList.toggle("active");
+}
+
+</script>
+
+</body>
+</html>

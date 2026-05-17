@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Berita & Pengumuman | Etherea Library</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins', sans-serif;
+    min-height:100vh;
+    overflow-x:hidden;
+    position:relative;
+    padding:0;
+
+    background:
+    linear-gradient(
+        135deg,
+        #fcfaff 0%,
+        #f6f0ff 25%,
+        #f3ecff 50%,
+        #fdfbff 100%
+    );
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar{
+    width:100%;
+    padding:25px 70px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:100;
+    backdrop-filter:blur(20px);
+    background:rgba(255,255,255,0.2);
+    border-bottom:1px solid rgba(255,255,255,0.3);
+}
+
+.logo{
+    font-size:28px;
+    font-weight:700;
+    color:#6d42b3;
+}
+
+.logo span{
+    color:#c084fc;
+    font-style:italic;
+}
+
+.nav-links{
+    display:flex;
+    gap:35px;
+    flex-wrap:wrap;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:#6d42b3;
+    font-weight:500;
+    font-size:15px;
+    position:relative;
+    transition:.3s;
+}
+
+.nav-links a::after{
+    content:'';
+    position:absolute;
+    left:0;
+    bottom:-8px;
+    width:0%;
+    height:2px;
+    background:#c084fc;
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:#7e22ce;
+}
+
+.nav-links a:hover::after{
+    width:100%;
+}
+
+/* MAIN */
+
+.main-content{
+    padding:70px 20px;
+}
+
+/* BACKGROUND */
+
+.bg-blur1,
+.bg-blur2,
+.bg-blur3{
+    position:fixed;
+    border-radius:50%;
+    filter:blur(130px);
+    z-index:0;
+    opacity:0.7;
+    animation:float 12s ease-in-out infinite alternate;
+}
+
+.bg-blur1{
+    width:400px;
+    height:400px;
+    background:rgba(210,190,255,0.45);
+    top:-120px;
+    left:-100px;
+}
+
+.bg-blur2{
+    width:350px;
+    height:350px;
+    background:rgba(255,255,255,0.9);
+    bottom:-100px;
+    right:-80px;
+    animation-delay:2s;
+}
+
+.bg-blur3{
+    width:250px;
+    height:250px;
+    background:rgba(232,220,255,0.5);
+    top:45%;
+    left:55%;
+    animation-delay:4s;
+}
+
+/* SHAPES */
+
+.shape{
+    position:fixed;
+    background:rgba(255,255,255,0.2);
+    border:1px solid rgba(255,255,255,0.5);
+    backdrop-filter:blur(10px);
+    z-index:0;
+    animation:floatShape 15s ease-in-out infinite alternate;
+}
+
+.shape1{
+    width:120px;
+    height:120px;
+    border-radius:35px;
+    top:15%;
+    right:10%;
+}
+
+.shape2{
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    bottom:18%;
+    left:8%;
+}
+
+.shape3{
+    width:70px;
+    height:70px;
+    border-radius:20px;
+    top:65%;
+    right:22%;
+}
+
+/* STAR */
+
+.star{
+    position:fixed;
+    width:5px;
+    height:5px;
+    background:white;
+    border-radius:50%;
+    box-shadow:0 0 12px rgba(255,255,255,0.8);
+    z-index:0;
+    animation:blink 3s infinite alternate;
+}
+
+.star:nth-child(1){
+    top:12%;
+    left:20%;
+}
+
+.star:nth-child(2){
+    top:30%;
+    right:25%;
+}
+
+.star:nth-child(3){
+    bottom:18%;
+    left:40%;
+}
+
+.star:nth-child(4){
+    top:70%;
+    right:15%;
+}
+
+/* CONTAINER */
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    position:relative;
+    z-index:2;
+}
+
+/* TITLE */
+
+.title{
+    text-align:center;
+    font-size:3rem;
+    font-weight:700;
+    color:#6d42b3;
+    margin-bottom:15px;
+}
+
+.subtitle{
+    text-align:center;
+    color:#8a79a8;
+    margin-bottom:60px;
+}
+
+/* NEWS GRID */
+
+.news-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:28px;
+    margin-bottom:60px;
+}
+
+/* CARD */
+
+.card{
+    background:rgba(255,255,255,0.55);
+    backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,0.6);
+    border-radius:30px;
+    padding:28px;
+    position:relative;
+    transition:0.4s;
+    box-shadow:0 10px 30px rgba(160,120,220,0.12);
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+.tag{
+    display:inline-block;
+    padding:7px 16px;
+    border-radius:30px;
+    background:rgba(210,190,255,0.18);
+    color:#7b57b5;
+    font-size:0.8rem;
+    font-weight:600;
+    margin-bottom:18px;
+}
+
+.news-btn{
+    width:100%;
+    border:none;
+    cursor:pointer;
+    text-align:left;
+    background:linear-gradient(
+        135deg,
+        #f7f1ff,
+        #efe4ff
+    );
+    color:#6b44a6;
+    padding:18px;
+    border-radius:18px;
+    font-size:1rem;
+    font-weight:600;
+}
+
+.detail{
+    display:none;
+    margin-top:18px;
+    color:#6f6387;
+    line-height:1.8;
+}
+
+/* CALENDAR */
+
+.calendar-wrapper{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+}
+
+.calendar-box,
+.agenda-box{
+    background:rgba(255,255,255,0.55);
+    backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,0.6);
+    border-radius:30px;
+    padding:28px;
+}
+
+.section-title{
+    font-size:1.5rem;
+    color:#6d42b3;
+    margin-bottom:25px;
+    font-weight:700;
+}
+
+.calendar-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.calendar-header button{
+    border:none;
+    background:#efe4ff;
+    color:#6b44a6;
+    width:40px;
+    height:40px;
+    border-radius:12px;
+    cursor:pointer;
+    font-size:1rem;
+    font-weight:bold;
+}
+
+#monthYear{
+    font-size:1.1rem;
+    font-weight:600;
+    color:#6d42b3;
+}
+
+.days,
+.dates{
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    gap:10px;
+    text-align:center;
+}
+
+.days div{
+    font-weight:600;
+    color:#8a79a8;
+}
+
+.dates div{
+    padding:12px;
+    border-radius:14px;
+    cursor:pointer;
+    transition:0.3s;
+    color:#6f6387;
+    position:relative;
+}
+
+.dates div:hover{
+    background:#f1e7ff;
+}
+
+.today{
+    background:#dcc7ff;
+    color:#5d379f !important;
+    font-weight:700;
+}
+
+.has-event{
+    background:#f4ecff;
+    border:2px solid #d7bbff;
+}
+
+.has-event::after{
+    content:"";
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:#8f5de8;
+    position:absolute;
+    bottom:6px;
+    left:50%;
+    transform:translateX(-50%);
+}
+
+.agenda-item{
+    background:rgba(245,238,255,0.7);
+    padding:22px;
+    border-radius:20px;
+}
+
+.agenda-date{
+    color:#7b57b5;
+    font-size:0.9rem;
+    font-weight:600;
+    margin-bottom:10px;
+}
+
+.agenda-title{
+    color:#5f4690;
+    font-weight:700;
+    font-size:1.1rem;
+}
+
+/* ANIMATION */
+
+@keyframes float{
+    from{
+        transform:translateY(0px);
+    }
+    to{
+        transform:translateY(35px);
+    }
+}
+
+@keyframes floatShape{
+    from{
+        transform:translateY(0px);
+    }
+    to{
+        transform:translateY(25px);
+    }
+}
+
+@keyframes blink{
+    from{
+        opacity:0.4;
+    }
+    to{
+        opacity:1;
+    }
+}
+
+@media(max-width:900px){
+
+    .calendar-wrapper{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:768px){
+
+    .navbar{
+        padding:20px;
+        flex-direction:column;
+        gap:18px;
+    }
+
+    .nav-links{
+        justify-content:center;
+        gap:18px;
+    }
+
+    .title{
+        font-size:2.2rem;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<div class="navbar">
+
+    <div class="logo">
+        📚 Etherea <span>Library</span>
+    </div>
+
+    <div class="nav-links">
+        <a href="etherea library.html">Etherea Library</a>
+        <a href="home.html">Home</a>
+        <a href="profil.html">Profil</a>
+        <a href="koleksi.html">Koleksi</a>
+        <a href="layanan.html">Layanan</a>
+        <a href="agenda.html">Agenda</a>
+        <a href="FAQ.html">FAQ</a>
+        <a href="kontak.html">Kontak</a>
+    </div>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="main-content">
+
+<div class="bg-blur1"></div>
+<div class="bg-blur2"></div>
+<div class="bg-blur3"></div>
+
+<div class="shape shape1"></div>
+<div class="shape shape2"></div>
+<div class="shape shape3"></div>
+
+<div class="star"></div>
+<div class="star"></div>
+<div class="star"></div>
+<div class="star"></div>
+
+<div class="container">
+
+    <h1 class="title">📢 Berita & Pengumuman</h1>
+
+    <p class="subtitle">
+        Update terbaru seputar kegiatan dan event literasi di Etherea Library
+    </p>
+
+    <!-- NEWS -->
+
+    <div class="news-grid">
+
+        <div class="card">
+            <div class="tag">Festival</div>
+
+            <button class="news-btn" onclick="showDetail(1)">
+                📚 Festival Literasi Etherea 2026
+            </button>
+
+            <div id="detail1" class="detail">
+                Festival literasi dengan workshop,
+                seminar, dan diskusi buku inspiratif.
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="tag">Workshop</div>
+
+            <button class="news-btn" onclick="showDetail(2)">
+                ✍️ Workshop Menulis Kreatif
+            </button>
+
+            <div id="detail2" class="detail">
+                Belajar teknik menulis modern bersama mentor kreatif.
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="tag">Seminar</div>
+
+            <button class="news-btn" onclick="showDetail(3)">
+                🎓 Seminar Literasi Digital
+            </button>
+
+            <div id="detail3" class="detail">
+                Seminar mengenai pentingnya literasi digital.
+            </div>
+        </div>
+
+    </div>
+
+    <!-- CALENDAR -->
+
+    <div class="calendar-wrapper">
+
+        <!-- CALENDAR -->
+
+        <div class="calendar-box">
+
+            <h2 class="section-title">
+                📅 Kalender Agenda
+            </h2>
+
+            <div class="calendar-header">
+
+                <button onclick="prevMonth()">‹</button>
+
+                <div id="monthYear"></div>
+
+                <button onclick="nextMonth()">›</button>
+
+            </div>
+
+            <div class="days">
+                <div>Min</div>
+                <div>Sen</div>
+                <div>Sel</div>
+                <div>Rab</div>
+                <div>Kam</div>
+                <div>Jum</div>
+                <div>Sab</div>
+            </div>
+
+            <div class="dates" id="calendarDates"></div>
+
+        </div>
+
+        <!-- AGENDA -->
+
+        <div class="agenda-box">
+
+            <h2 class="section-title">
+                ✨ Detail Agenda
+            </h2>
+
+            <div id="agendaContent">
+
+                <div class="agenda-item">
+
+                    <div class="agenda-date">
+                        Klik tanggal di kalender
+                    </div>
+
+                    <div class="agenda-title">
+                        Pilih agenda yang ingin dilihat ✨
+                    </div>
+
+                    <p style="
+                        color:#6f6387;
+                        line-height:1.8;
+                        margin-top:12px;
+                    ">
+                        Detail event akan muncul di sini.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+
+<script>
+
+/* NEWS DETAIL */
+
+function showDetail(id){
+
+    let detail =
+    document.getElementById("detail" + id);
+
+    if(detail.style.display === "block"){
+        detail.style.display = "none";
+    }
+
+    else{
+        detail.style.display = "block";
+    }
+
+}
+
+/* CALENDAR */
+
+let currentDate = new Date(2026, 5);
+
+/* EVENT DATA */
+
+const eventData = {
+
+    "2026-5-20" : {
+        title : "📚 Festival Literasi Etherea",
+        date  : "20 Juni 2026",
+        desc  : "Festival literasi dengan workshop, seminar, dan diskusi buku inspiratif."
+    },
+
+    "2026-5-24" : {
+        title : "☕ Reading & Coffee Night",
+        date  : "24 Juni 2026",
+        desc  : "Acara membaca santai bersama komunitas literasi."
+    },
+
+    "2026-6-5" : {
+        title : "✍️ Workshop Menulis Kreatif",
+        date  : "05 Juli 2026",
+        desc  : "Belajar teknik menulis modern bersama mentor kreatif."
+    },
+
+    "2026-6-18" : {
+        title : "🎓 Seminar Literasi Digital",
+        date  : "18 Juli 2026",
+        desc  : "Seminar mengenai pentingnya literasi digital."
+    },
+
+    "2026-7-3" : {
+        title : "🎼 Poetry & Music Evening",
+        date  : "03 Agustus 2026",
+        desc  : "Pembacaan puisi modern dengan live acoustic."
+    }
+
+};
+
+/* RENDER */
+
+function renderCalendar(){
+
+    const monthYear =
+    document.getElementById("monthYear");
+
+    const calendarDates =
+    document.getElementById("calendarDates");
+
+    calendarDates.innerHTML = "";
+
+    const year =
+    currentDate.getFullYear();
+
+    const month =
+    currentDate.getMonth();
+
+    const firstDay =
+    new Date(year, month, 1).getDay();
+
+    const lastDate =
+    new Date(year, month + 1, 0).getDate();
+
+    const months = [
+        "Januari","Februari","Maret",
+        "April","Mei","Juni",
+        "Juli","Agustus","September",
+        "Oktober","November","Desember"
+    ];
+
+    monthYear.innerHTML =
+    months[month] + " " + year;
+
+    let hasEventThisMonth = false;
+
+    for(let key in eventData){
+
+        const [y,m] = key.split("-");
+
+        if(
+            Number(y) === year &&
+            Number(m) === month
+        ){
+            hasEventThisMonth = true;
+        }
+
+    }
+
+    /* EMPTY MONTH */
+
+    if(!hasEventThisMonth){
+
+        calendarDates.innerHTML = `
+
+        <div style="
+            grid-column:span 7;
+            padding:40px 20px;
+            text-align:center;
+            color:#9a8ab8;
+            line-height:1.8;
+        ">
+
+            ✨ Tidak ada agenda pada bulan ini
+
+        </div>
+
+        `;
+
+        return;
+
+    }
+
+    /* EMPTY */
+
+    for(let i = 0; i < firstDay; i++){
+
+        const empty =
+        document.createElement("div");
+
+        calendarDates.appendChild(empty);
+
+    }
+
+    /* DATE */
+
+    for(let day = 1; day <= lastDate; day++){
+
+        const dayBox =
+        document.createElement("div");
+
+        dayBox.innerHTML = day;
+
+        const today = new Date();
+
+        const eventKey =
+        `${year}-${month}-${day}`;
+
+        if(
+            day === today.getDate() &&
+            month === today.getMonth() &&
+            year === today.getFullYear()
+        ){
+            dayBox.classList.add("today");
+        }
+
+        if(eventData[eventKey]){
+
+            dayBox.classList.add("has-event");
+
+            dayBox.onclick = function(){
+
+                document.getElementById("agendaContent")
+                .innerHTML = `
+
+                <div class="agenda-item">
+
+                    <div class="agenda-date">
+                        ${eventData[eventKey].date}
+                    </div>
+
+                    <div class="agenda-title">
+                        ${eventData[eventKey].title}
+                    </div>
+
+                    <p style="
+                        color:#6f6387;
+                        line-height:1.8;
+                        margin-top:12px;
+                    ">
+                        ${eventData[eventKey].desc}
+                    </p>
+
+                </div>
+
+                `;
+
+            };
+
+        }
+
+        calendarDates.appendChild(dayBox);
+
+    }
+
+}
+
+/* BUTTON */
+
+function prevMonth(){
+
+    currentDate.setMonth(
+        currentDate.getMonth() - 1
+    );
+
+    renderCalendar();
+
+}
+
+function nextMonth(){
+
+    currentDate.setMonth(
+        currentDate.getMonth() + 1
+    );
+
+    renderCalendar();
+
+}
+
+renderCalendar();
+
+</script>
+
+</body>
+</html>

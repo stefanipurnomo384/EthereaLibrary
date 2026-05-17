@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Etherea Library - Koleksi Buku</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+
+body{
+    background:
+    linear-gradient(135deg,#f7f2fa,#efe7ff,#f6f4ff);
+    min-height:100vh;
+    padding:60px;
+    overflow-x:hidden;
+}
+
+/* BACKGROUND */
+
+body::before{
+    content:"";
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:#c8b6ff;
+    filter:blur(150px);
+    top:-120px;
+    left:-100px;
+    opacity:0.4;
+    z-index:-1;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    width:400px;
+    height:400px;
+    background:#e7c6ff;
+    filter:blur(140px);
+    bottom:-100px;
+    right:-100px;
+    opacity:0.5;
+    z-index:-1;
+}
+
+.title{
+    text-align:center;
+    font-size:52px;
+    color:#5b3f7c;
+    margin-bottom:10px;
+    font-weight:700;
+}
+
+.subtitle{
+    text-align:center;
+    color:#7a6a91;
+    margin-bottom:70px;
+    font-size:17px;
+}
+
+.books{
+    display:flex;
+    flex-direction:column;
+    gap:40px;
+}
+
+/* CARD 1 */
+
+.book-card-1{
+    display:flex;
+    align-items:center;
+    gap:30px;
+
+    background:rgba(255,255,255,0.7);
+    backdrop-filter:blur(18px);
+
+    border-radius:30px;
+    padding:30px;
+
+    box-shadow:0 10px 40px rgba(140,120,180,0.15);
+}
+
+.book-cover-1{
+    width:180px;
+    height:250px;
+
+    border-radius:25px;
+
+    background:
+    linear-gradient(135deg,#9f86c0,#c8b6ff);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:white;
+    font-size:26px;
+    font-weight:600;
+}
+
+.book-info-1 h2{
+    color:#5b3f7c;
+    font-size:32px;
+    margin-bottom:10px;
+}
+
+.book-info-1 p{
+    color:#75658c;
+    line-height:1.8;
+}
+
+/* CARD 2 */
+
+.book-card-2{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+}
+
+.book-box{
+    background:white;
+    border-radius:28px;
+    overflow:hidden;
+
+    box-shadow:0 8px 35px rgba(140,120,180,0.12);
+
+    transition:0.4s;
+}
+
+.book-box:hover{
+    transform:translateY(-10px);
+}
+
+.book-top{
+    height:180px;
+
+    background:
+    linear-gradient(135deg,#d8c4ff,#b8c0ff);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:white;
+    font-size:28px;
+    font-weight:600;
+}
+
+.book-bottom{
+    padding:25px;
+}
+
+.book-bottom h3{
+    color:#5d4b74;
+    margin-bottom:10px;
+    font-size:24px;
+}
+
+.book-bottom p{
+    color:#7d6d93;
+    line-height:1.7;
+}
+
+/* CARD 3 */
+
+.book-card-3{
+    background:
+    linear-gradient(135deg,rgba(255,255,255,0.7),rgba(240,230,255,0.9));
+
+    backdrop-filter:blur(15px);
+
+    border-radius:35px;
+    padding:40px;
+
+    box-shadow:0 10px 40px rgba(140,120,180,0.13);
+}
+
+.featured{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:20px;
+}
+
+.featured-left h2{
+    font-size:36px;
+    color:#5c437e;
+    margin-bottom:10px;
+}
+
+.featured-left p{
+    color:#7d6d93;
+    max-width:600px;
+    line-height:1.8;
+}
+
+.badge{
+    background:#b8a1ff;
+    color:white;
+    padding:12px 24px;
+    border-radius:100px;
+    font-size:14px;
+    font-weight:500;
+}
+
+/* SHOWCASE */
+
+.showcase{
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    flex-wrap:wrap;
+    margin-top:35px;
+}
+
+.show-item{
+    width:220px;
+
+    background:white;
+    border-radius:28px;
+
+    padding:30px 20px;
+
+    text-align:center;
+
+    transition:0.4s;
+
+    box-shadow:0 8px 30px rgba(140,120,180,0.12);
+}
+
+.show-item:hover{
+    transform:translateY(-10px) scale(1.03);
+}
+
+.circle{
+    width:90px;
+    height:90px;
+
+    margin:auto;
+    margin-bottom:20px;
+
+    border-radius:50%;
+
+    background:
+    linear-gradient(135deg,#c8b6ff,#9f86c0);
+
+    box-shadow:0 8px 20px rgba(160,130,220,0.35);
+}
+
+.show-item h3{
+    color:#5d4b74;
+    margin-bottom:8px;
+    font-size:22px;
+}
+
+.show-item span{
+    color:#8a7aa0;
+    font-size:14px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+    body{
+        padding:30px;
+    }
+
+    .book-card-1{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .book-card-2{
+        grid-template-columns:1fr;
+    }
+
+    .featured{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+}
+
+</style>
+</head>
+<body>
+
+<h1 class="title">Etherea Library</h1>
+
+<p class="subtitle">
+Koleksi buku modern dengan tampilan aesthetic dan elegant
+</p>
+
+<section class="books">
+
+    <!-- CARD 1 -->
+
+    <div class="book-card-1">
+
+        <div class="book-cover-1">
+            BUMI
+        </div>
+
+        <div class="book-info-1">
+
+            <h2>Bumi — Tere Liye</h2>
+
+            <p>
+                Novel fantasi populer yang menceritakan petualangan Raib,
+                Seli, dan Ali dalam dunia paralel penuh misteri dan kekuatan unik.
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- CARD 2 -->
+
+    <div class="book-card-2">
+
+        <div class="book-box">
+
+            <div class="book-top">
+                Atomic
+            </div>
+
+            <div class="book-bottom">
+
+                <h3>Atomic Habits</h3>
+
+                <p>
+                    Buku self development tentang kebiasaan kecil
+                    yang mampu membawa perubahan besar.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="book-box">
+
+            <div class="book-top">
+                Mountain
+            </div>
+
+            <div class="book-bottom">
+
+                <h3>The Mountain Is You</h3>
+
+                <p>
+                    Membahas cara mengatasi self sabotage dan
+                    membangun versi diri yang lebih baik.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- CARD 3 -->
+
+    <div class="book-card-3">
+
+        <div class="featured">
+
+            <div class="featured-left">
+
+                <h2>Popular This Week</h2>
+
+                <p>
+                    Buku favorit pengunjung Etherea Library
+                    dengan tampilan modern dan elegan.
+                </p>
+
+            </div>
+
+            <div class="badge">
+                Trending
+            </div>
+
+        </div>
+
+        <div class="showcase">
+
+            <div class="show-item">
+
+                <div class="circle"></div>
+
+                <h3>Laut Bercerita</h3>
+
+                <span>Leila S. Chudori</span>
+
+            </div>
+
+            <div class="show-item">
+
+                <div class="circle"></div>
+
+                <h3>Madilog</h3>
+
+                <span>Tan Malaka</span>
+
+            </div>
+
+            <div class="show-item">
+
+                <div class="circle"></div>
+
+                <h3>Rich Dad Poor Dad</h3>
+
+                <span>Robert T. Kiyosaki</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+</body>
+</html>

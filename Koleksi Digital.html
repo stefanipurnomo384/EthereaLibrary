@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Etherea Digital Collection</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* ===== BASE ===== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#f7f3ff,#efe7ff,#ffffff);
+    color:#3b2b4a;
+}
+
+/* ===== NAVBAR ===== */
+
+nav{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 8%;
+    background:rgba(255,255,255,0.4);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid rgba(124,58,237,0.2);
+}
+
+.logo{
+    font-size:22px;
+    font-weight:700;
+    color:#7c3aed;
+}
+
+nav ul{
+    display:flex;
+    gap:20px;
+    list-style:none;
+}
+
+nav ul a{
+    text-decoration:none;
+    color:#5b4b6b;
+    transition:0.3s;
+}
+
+nav ul a:hover{
+    color:#7c3aed;
+}
+
+/* ===== HEADER ===== */
+
+header{
+    text-align:center;
+    padding:70px 8%;
+}
+
+header h1{
+    font-size:50px;
+    color:#5b21b6;
+}
+
+header p{
+    margin-top:10px;
+    color:#6b5a7a;
+}
+
+/* ===== SECTION ===== */
+
+.section{
+    padding:40px 8%;
+}
+
+.section h2{
+    font-size:28px;
+    margin-bottom:20px;
+    color:#4c1d95;
+}
+
+/* ===== GRID ===== */
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:22px;
+}
+
+/* ===== CARD ===== */
+
+.card{
+    background:rgba(255,255,255,0.6);
+    border:1px solid rgba(124,58,237,0.15);
+    border-radius:22px;
+    padding:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.05);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.tag{
+    display:inline-block;
+    padding:5px 12px;
+    font-size:12px;
+    border-radius:999px;
+    background:#ede9fe;
+    color:#6d28d9;
+    margin-bottom:10px;
+}
+
+.card h3{
+    color:#4c1d95;
+    margin-bottom:8px;
+}
+
+.card p{
+    font-size:13px;
+    color:#6b7280;
+    line-height:1.6;
+}
+
+/* ===== FOOTER ===== */
+
+footer{
+    text-align:center;
+    padding:30px;
+    margin-top:40px;
+    background:#4c1d95;
+    color:white;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <div class="logo">✦ Etherea Library</div>
+    <ul>
+        <li><a href="koleksi.html">Koleksi</a></li>
+        <li><a href="koleksi buku.html">Koleksi Buku</a></li>
+		<li><a href="koleksi digital.html">Koleksi digital</a></li>
+		<li><a href="skripsi.html">Skripsi</a></li>
+        
+    </ul>
+</nav>
+
+<!-- HEADER -->
+<header>
+    <h1>Koleksi Digital Etherea</h1>
+    <p>Semua koleksi buku dalam satu tempat dengan tampilan modern dan clean.</p>
+</header>
+
+<!-- KOLEKSI DIGITAL -->
+<section class="section" id="koleksi">
+    <h2>Koleksi Digital</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <span class="tag">Digital Library</span>
+            <h3>Digital Libraries</h3>
+            <p>Sistem pengelolaan perpustakaan modern berbasis teknologi digital.</p>
+        </div>
+
+        <div class="card">
+            <span class="tag">Technology</span>
+            <h3>AI in Modern World</h3>
+            <p>Peran kecerdasan buatan dalam kehidupan sehari-hari manusia.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- NOVEL -->
+<section class="section" id="novel">
+    <h2>Koleksi Novel</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <span class="tag">Romance</span>
+            <h3>Senja di Ujung Kota</h3>
+            <p>Cerita pertemuan tak terduga yang mengubah hidup seseorang.</p>
+        </div>
+
+        <div class="card">
+            <span class="tag">Drama</span>
+            <h3>Hujan Tanpa Nama</h3>
+            <p>Kisah kehilangan dan kenangan yang tidak mudah dilupakan.</p>
+        </div>
+
+        <div class="card">
+            <span class="tag">Fiction</span>
+            <h3>Laut yang Tak Kembali</h3>
+            <p>Perjalanan mencari jati diri di tengah kehidupan yang keras.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- SELF DEVELOPMENT -->
+<section class="section" id="self">
+    <h2>Self Development</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <span class="tag">Growth</span>
+            <h3>Atomic Habits</h3>
+            <p>Kekuatan perubahan kecil yang membawa hasil besar.</p>
+        </div>
+
+        <div class="card">
+            <span class="tag">Mindset</span>
+            <h3>Think Better</h3>
+            <p>Mengubah pola pikir untuk kehidupan yang lebih baik.</p>
+        </div>
+
+        <div class="card">
+            <span class="tag">Focus</span>
+            <h3>Deep Work</h3>
+            <p>Cara meningkatkan fokus dan produktivitas tanpa distraksi.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- AKADEMIK -->
+<section class="section" id="akademik">
+    <h2>Koleksi Akademik</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <span class="tag">Computer Science</span>
+            <h3>Algorithm Basics</h3>
+            <p>Dasar algoritma dan struktur data dalam dunia pemrograman.</p>
+        </div>
+
+        <div class="card">
+            <span class="tag">Education</span>
+            <h3>Learning Strategy</h3>
+            <p>Metode belajar efektif untuk pelajar dan mahasiswa.</p>
+        </div>
+
+        <div class="card">
+            <span class="tag">Library Science</span>
+            <h3>Library Management</h3>
+            <p>Pengelolaan sistem perpustakaan modern dan digital.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="kontak">
+    © 2026 Etherea Library — Digital Collection System
+</footer>
+
+</body>
+</html>

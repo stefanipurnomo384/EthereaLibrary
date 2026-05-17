@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Self Development Books</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+
+body{
+    background:
+    linear-gradient(135deg,#f8f5ff,#efe8ff,#f5f1ff);
+
+    min-height:100vh;
+}
+
+/* NAVBAR */
+
+.navbar{
+    position:sticky;
+    top:0;
+    z-index:999;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:22px 70px;
+
+    background:rgba(255,255,255,.45);
+
+    backdrop-filter:blur(18px);
+
+    border-bottom:1px solid rgba(255,255,255,.4);
+
+    box-shadow:
+    0 10px 30px rgba(124,58,237,.08);
+}
+
+.logo{
+    font-size:28px;
+    font-weight:700;
+    color:#5b21b6;
+}
+
+.nav-links{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+}
+
+.nav-links a{
+    text-decoration:none;
+
+    padding:12px 18px;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,.65);
+
+    color:#6d28d9;
+
+    font-size:14px;
+    font-weight:600;
+
+    transition:.3s;
+
+    box-shadow:
+    0 5px 15px rgba(124,58,237,.05);
+}
+
+.nav-links a:hover,
+.nav-links .active{
+
+    background:
+    linear-gradient(135deg,#7c3aed,#a855f7);
+
+    color:white;
+
+    transform:translateY(-3px);
+}
+
+/* WRAPPER */
+
+.wrapper{
+    padding:60px;
+}
+
+/* TITLE */
+
+.title{
+    text-align:center;
+    margin-bottom:70px;
+}
+
+.title h1{
+    font-size:52px;
+    color:#5b3f7c;
+    margin-bottom:15px;
+}
+
+.title p{
+    color:#84759a;
+    font-size:17px;
+}
+
+/* CONTAINER */
+
+.self-container{
+    display:grid;
+    grid-template-columns:1.2fr 1fr;
+    gap:30px;
+}
+
+/* LEFT FEATURE */
+
+.feature-book{
+    position:relative;
+
+    border-radius:35px;
+
+    overflow:hidden;
+
+    min-height:520px;
+
+    padding:40px;
+
+    display:flex;
+    align-items:flex-end;
+
+    background:
+    linear-gradient(135deg,#c8b6ff,#9f86c0);
+
+    box-shadow:0 15px 40px rgba(140,120,180,0.18);
+}
+
+.feature-book::before{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background:
+    linear-gradient(to top,
+    rgba(0,0,0,0.45),
+    transparent);
+}
+
+.feature-content{
+    position:relative;
+    z-index:2;
+}
+
+.label{
+    display:inline-block;
+
+    background:white;
+    color:#7c61a8;
+
+    padding:10px 20px;
+
+    border-radius:100px;
+
+    font-size:14px;
+    margin-bottom:20px;
+}
+
+.feature-content h2{
+    color:white;
+    font-size:48px;
+    margin-bottom:15px;
+}
+
+.feature-content p{
+    color:#f4efff;
+    line-height:1.9;
+    max-width:500px;
+}
+
+/* RIGHT SIDE */
+
+.book-list{
+    display:flex;
+    flex-direction:column;
+    gap:22px;
+}
+
+.book-item{
+    background:white;
+
+    border-radius:28px;
+
+    padding:25px;
+
+    display:flex;
+    gap:20px;
+    align-items:center;
+
+    transition:0.35s;
+
+    box-shadow:0 10px 30px rgba(140,120,180,0.10);
+}
+
+.book-item:hover{
+    transform:translateX(10px);
+}
+
+/* BOOK COVER */
+
+.book-cover{
+    width:90px;
+    height:120px;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    flex-shrink:0;
+
+    box-shadow:0 8px 20px rgba(140,120,180,0.15);
+}
+
+.book-cover img{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+}
+
+/* BOOK INFO */
+
+.book-info h3{
+    color:#5d4b74;
+    font-size:24px;
+    margin-bottom:10px;
+}
+
+.book-info p{
+    color:#84759a;
+    line-height:1.7;
+    font-size:14px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+    .navbar{
+        padding:20px;
+        flex-direction:column;
+        gap:18px;
+    }
+
+    .wrapper{
+        padding:30px;
+    }
+
+    .self-container{
+        grid-template-columns:1fr;
+    }
+
+    .feature-book{
+        min-height:420px;
+    }
+
+    .feature-content h2{
+        font-size:38px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<div class="navbar">
+
+    <div class="logo">
+        📚 Etherea Library
+    </div>
+
+    <div class="nav-links">
+
+        <a href="koleksi buku.html">
+            Koleksi Buku
+        </a>
+
+        <a href="novel.html">
+            Novel
+        </a>
+
+        <a href="Self Development.html" class="active">
+            Self Development
+        </a>
+
+        <a href="akademik.html">
+            Akademik
+        </a>
+
+    </div>
+
+</div>
+
+<div class="wrapper">
+
+    <div class="title">
+
+        <h1>Self Development Collection</h1>
+
+        <p>
+            Koleksi buku pengembangan diri dengan tampilan modern,
+            elegant, dan aesthetic.
+        </p>
+
+    </div>
+
+    <div class="self-container">
+
+        <!-- FEATURE BOOK -->
+
+        <div class="feature-book">
+
+            <div class="feature-content">
+
+                <div class="label">
+                    Most Popular
+                </div>
+
+                <h2>Atomic Habits</h2>
+
+                <p>
+                    Buku karya James Clear yang membahas bagaimana
+                    perubahan kecil dan konsisten dapat membawa
+                    dampak besar dalam hidup.
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- BOOK LIST -->
+
+        <div class="book-list">
+
+            <!-- BOOK 1 -->
+
+            <div class="book-item">
+
+                <div class="book-cover">
+                    <img src="mountain.jpg" alt="The Mountain Is You">
+                </div>
+
+                <div class="book-info">
+
+                    <h3>The Mountain Is You</h3>
+
+                    <p>
+                        Buku tentang mengatasi self sabotage
+                        dan membangun versi terbaik diri sendiri.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- BOOK 2 -->
+
+            <div class="book-item">
+
+                <div class="book-cover">
+                    <img src="berani.jpg" alt="Berani Tidak Disukai">
+                </div>
+
+                <div class="book-info">
+
+                    <h3>Berani Tidak Disukai</h3>
+
+                    <p>
+                        Buku pengembangan diri yang membahas cara hidup
+                        lebih bebas dan bahagia tanpa terlalu memikirkan
+                        penilaian orang lain.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- BOOK 3 -->
+
+            <div class="book-item">
+
+                <div class="book-cover">
+                    <img src="sebuah seni.jpg" alt="sebuah seni">
+                </div>
+
+                <div class="book-info">
+
+                    <h3>Sebuah Seni untuk Bersikap Bodoamat</h3>
+
+                    <p>
+                        Sebuah Seni untuk Bersikap Bodo Amat adalah buku pengembangan diri 
+                        yang mengajarkan bahwa hidup tidak harus selalu sempurna. Buku ini 
+                        membahas cara fokus pada hal yang benar-benar penting, menerima kekurangan 
+                        diri, dan tidak terlalu memikirkan pendapat atau masalah yang tidak perlu
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

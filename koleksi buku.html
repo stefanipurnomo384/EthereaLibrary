@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Etherea Library - Novel Catalog</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:
+    linear-gradient(135deg,#f5eeff,#efe8ff,#faf7ff);
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+/* AURORA */
+
+body::before{
+    content:'';
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:#c084fc;
+    border-radius:50%;
+    filter:blur(140px);
+    opacity:.35;
+    top:-150px;
+    left:-120px;
+    animation:aurora1 10s infinite alternate;
+}
+
+body::after{
+    content:'';
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:#8b5cf6;
+    border-radius:50%;
+    filter:blur(140px);
+    opacity:.25;
+    bottom:-150px;
+    right:-120px;
+    animation:aurora2 12s infinite alternate;
+}
+
+@keyframes aurora1{
+    from{
+        transform:translate(0,0);
+    }
+    to{
+        transform:translate(100px,80px);
+    }
+}
+
+@keyframes aurora2{
+    from{
+        transform:translate(0,0);
+    }
+    to{
+        transform:translate(-120px,-60px);
+    }
+}
+
+/* NAVBAR */
+
+.navbar{
+    padding:25px 70px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    backdrop-filter:blur(15px);
+    background:rgba(255,255,255,0.2);
+    position:sticky;
+    top:0;
+    z-index:100;
+    border-bottom:1px solid rgba(255,255,255,0.3);
+}
+
+.logo{
+    font-size:28px;
+    font-weight:700;
+    color:#5b21b6;
+}
+
+/* MENU */
+
+.nav-menu{
+    display:flex;
+    gap:28px;
+    align-items:center;
+}
+
+.nav-menu a{
+    text-decoration:none;
+    color:#6b7280;
+    font-size:15px;
+    font-weight:500;
+    position:relative;
+    transition:.3s;
+}
+
+/* garis hover */
+
+.nav-menu a::after{
+    content:'';
+    position:absolute;
+    left:0;
+    bottom:-6px;
+
+    width:0%;
+    height:2px;
+
+    background:#8b5cf6;
+
+    transition:.3s;
+}
+
+.nav-menu a:hover::after,
+.nav-menu .active::after{
+    width:100%;
+}
+
+.nav-menu a:hover,
+.nav-menu .active{
+    color:#5b21b6;
+}
+
+/* HERO */
+
+.hero{
+    text-align:center;
+    padding:100px 20px 50px;
+    position:relative;
+    z-index:1;
+}
+
+.hero h1{
+    font-size:65px;
+    color:#4c1d95;
+    margin-bottom:20px;
+    animation:fadeUp 1s ease;
+}
+
+.hero p{
+    color:#6b7280;
+    max-width:700px;
+    margin:auto;
+    line-height:1.8;
+    animation:fadeUp 1.3s ease;
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* SEARCH */
+
+.search-container{
+    margin-top:40px;
+    display:flex;
+    justify-content:center;
+}
+
+.search-box{
+    width:500px;
+    max-width:90%;
+    padding:18px 25px;
+    border:none;
+    border-radius:20px;
+    background:rgba(255,255,255,0.7);
+    backdrop-filter:blur(10px);
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+    font-size:16px;
+    outline:none;
+}
+
+/* CATEGORY BOX */
+
+.category-section{
+    padding:20px 70px 60px;
+    position:relative;
+    z-index:1;
+}
+
+.category-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.category-card{
+    text-decoration:none;
+    background:rgba(255,255,255,0.45);
+    backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,0.3);
+    border-radius:28px;
+    padding:35px 30px;
+    transition:.4s;
+    box-shadow:0 12px 30px rgba(0,0,0,0.08);
+}
+
+.category-card:hover{
+    transform:translateY(-10px) scale(1.02);
+    background:rgba(255,255,255,0.6);
+}
+
+.category-icon{
+    font-size:45px;
+    margin-bottom:20px;
+}
+
+.category-card h3{
+    color:#4c1d95;
+    margin-bottom:12px;
+    font-size:24px;
+}
+
+.category-card p{
+    color:#6b7280;
+    line-height:1.7;
+    font-size:14px;
+}
+
+/* BOOKS */
+
+.book-section{
+    padding:20px 70px 90px;
+    position:relative;
+    z-index:1;
+}
+
+.book-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:rgba(255,255,255,0.45);
+    backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,0.3);
+    border-radius:28px;
+    overflow:hidden;
+    transition:.4s;
+    box-shadow:0 12px 30px rgba(0,0,0,0.08);
+}
+
+.card:hover{
+    transform:translateY(-10px) scale(1.02);
+}
+
+.card img{
+    width:100%;
+    height:320px;
+    object-fit:cover;
+}
+
+.card-content{
+    padding:22px;
+}
+
+.card-content h3{
+    color:#4c1d95;
+    margin-bottom:10px;
+    font-size:22px;
+}
+
+.author{
+    color:#6b7280;
+    margin-bottom:15px;
+}
+
+.desc{
+    font-size:14px;
+    line-height:1.7;
+    color:#4b5563;
+    margin-bottom:18px;
+}
+
+.status{
+    display:inline-block;
+    padding:8px 15px;
+    border-radius:20px;
+    background:#dcfce7;
+    color:#166534;
+    font-size:13px;
+    font-weight:600;
+}
+
+/* FOOTER */
+
+footer{
+    text-align:center;
+    padding:35px;
+    color:#6b7280;
+    background:rgba(255,255,255,0.3);
+    backdrop-filter:blur(10px);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+    .navbar{
+        padding:20px;
+        flex-direction:column;
+        gap:18px;
+    }
+
+    .nav-menu{
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:18px;
+    }
+
+    .hero h1{
+        font-size:42px;
+    }
+
+    .book-section{
+        padding:20px;
+    }
+
+    .category-section{
+        padding:20px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<div class="navbar">
+
+    <div class="logo">📚 Etherea Library</div>
+
+    <div class="nav-menu">
+
+        <a href="koleksi.html" class="active">
+            Koleksi
+        </a>
+
+    </div>
+
+</div>
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <h1>Koleksi Buku</h1>
+
+    <p>
+        Jelajahi koleksi buku non digital favorit dengan suasana 
+        nyaman dan tampilan modern layaknya perpustakaan masa kini.
+    </p>
+
+    <div class="search-container">
+        <input type="text" 
+        id="searchInput"
+        class="search-box"
+        placeholder="Cari novel atau penulis...">
+    </div>
+
+</section>
+
+<!-- CATEGORY -->
+
+<section class="category-section">
+
+    <div class="category-grid">
+
+        <a href="novel.html" class="category-card">
+
+            <div class="category-icon">📖</div>
+
+            <h3>Novel</h3>
+        </a>
+
+        <a href="Self Development.html" class="category-card">
+
+            <div class="category-icon">🧠</div>
+
+            <h3>Self Development</h3>
+        </a>
+
+        <a href="akademik.html" class="category-card">
+
+            <div class="category-icon">🎓</div>
+
+            <h3>Akademik</h3>
+
+        </a>
+
+    </div>
+
+</section>
+
+<!-- BOOKS -->
+
+<section class="book-section">
+
+<div class="book-grid" id="bookGrid">
+
+<!-- BOOK 1 -->
+
+<div class="card">
+
+<img src="laut bercerita.jpg" alt="Laut Bercerita">
+
+<div class="card-content">
+
+<h3>Laut Bercerita</h3>
+
+<p class="author">Leila S. Chudori</p>
+
+<p class="desc">
+Novel emosional tentang kehilangan, perjuangan, dan harapan 
+di tengah sejarah kelam Indonesia.
+</p>
+
+<span class="status">Tersedia 3</span>
+
+</div>
+</div>
+
+<!-- BOOK 2 -->
+
+<div class="card">
+
+<img src="mountain.jpg" alt="mountain">
+
+<div class="card-content">
+
+<h3>The Mountain Is You</h3>
+
+<p class="author">Brianna Wiest</p>
+
+<p class="desc">
+The Mountain Is You membahas tentang bagaimana seseorang sering menjadi penghalang terbesar bagi dirinya sendiri melalui rasa takut, kebiasaan buruk, dan overthinking. 
+Buku ini mengajak pembaca untuk memahami proses self-sabotage dan belajar mengubahnya menjadi langkah menuju pertumbuhan diri.
+</p>
+
+<span class="status">Dipinjam</span>
+
+</div>
+</div>
+
+<!-- BOOK 3 -->
+
+<div class="card">
+
+<img src="digital.jpg" alt="digital">
+
+<div class="card-content">
+
+<h3>Digital Libraries</h3>
+
+<p class="author">William Y. Arms</p>
+
+<p class="desc">
+Digital Libraries membahas perkembangan perpustakaan digital serta bagaimana teknologi digunakan untuk 
+mengelola, menyimpan, dan menyebarkan informasi secara elektronik.
+</p>
+
+<span class="status">Tersedia 1</span>
+
+</div>
+</div>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+© 2026 Etherea Library — Digital Novel Collection
+
+</footer>
+
+<!-- SEARCH SCRIPT -->
+
+<script>
+
+const searchInput = document.getElementById('searchInput');
+
+searchInput.addEventListener('keyup', function(){
+
+    const filter = searchInput.value.toLowerCase();
+
+    const cards = document.querySelectorAll('.card');
+
+    cards.forEach(card => {
+
+        const text = card.innerText.toLowerCase();
+
+        if(text.includes(filter)){
+            card.style.display = "";
+        }else{
+            card.style.display = "none";
+        }
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
